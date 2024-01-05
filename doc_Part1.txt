@@ -1,0 +1,154 @@
+import numpy as np -> import thư viện numpy 
+
+print(np.__version__)
+in ra phiên bản của numpy
+
+
+arr = np.array([1, 2, 3, 4, 5, 6])  #đưa vào numpy 1 mảng
+print(arr)
+output: [1, 2, 3, 4, 5, 6]
+
+print(type(arr))
+output: <class 'numpy.ndarray'>
+
+
+#đưa vào numpy dạng tuple
+arr = np.array((1, 2, 3, 4, 5))
+print(arr)
+output: [1, 2, 3, 4, 5] -> 1 mảng
+
+#đưa vào dạng set
+print(np.array({1, 2, 3, 4, 5, 6, 2, 1})) #giữ nguyên tính chất của của set
+output: {1, 2, 3, 4, 5, 6}
+
+#đưa vào dạng dict
+print(np.array({"name":"test", "old" : 18, "city" : "vietnam"}))
+output: {"name" : "test",  "old" : 18,  "city" : "vietnam"}
+#giữ nguyên tính chất của dict
+
+
+
+DIMENSION IN ARRAY (Chiều trong mảng)
+
+0-D
+print(np.array(23))
+
+1-D
+print(np.array(range(10)))
+output: [1, 2, 3, 4, 56, 7, 8, 9]
+
+2-D
+print(np.array([[1, 2, 4], [2, 4, 5]]))
+output: [
+[1, 2, 4],
+[2, 4, 5]
+]
+
+3-D
+print(np.array([[[1, 4, 5], [2, 3, 1]], [[4, 3, 1], [3, 1, 6]]]))
+output: [ #chiều thứ nhất
+[ #chiều thứ 2
+[1, 4, 5], # chiều thứ 3
+[2, 3, 1]  #
+],
+[
+[4, 3, 1],
+[3, 1, 6]
+]
+]
+
+#in ra số chiều của mảng 
+print(np.array([1, 2, 3, 4]).ndim) 
+output: 1 (1 chiều)
+
+
+ACCESS ARRAY ELEMENT AND SLICING ARRAY
+#Với mảng 1 chiều
+arr = np.array([1, 2, 3, 4 , 5])
+print(arr[0]) -> 1
+
+#Với mảng 2 chiều
+a = np.array([[2, 4, 5], [2, 6, 3]])
+print(a[0, 1]) -> 4 
+
+###
+[
+
+[2, 4, 5], #[2, 4, 5] là phần tử thứ 0 của chiều thứ nhất
+[2, 6, 3] #2, 6, 3 là các phần tử trong chiều thứ 2
+
+]
+              1
+              |
+a[0, 1] = [2, 4, 5]
+
+#Với mảng 3 chiều
+b = np.array([
+    [
+        [1, 2, 4], [4, 5, 1]
+    ], 
+    [   
+        [3, 5, 1], [4, 1, 3]
+    ]
+])
+
+print(b[1, 1, 2]) -> output: 3
+print(b[1, 1, 0:3:2]) -> output: [4, 3] 
+#0:3:2 -> start:end:step
+
+
+DATA TYPE IN numpy
+'i': integer
+'b' : boolean
+'u':unsigned integer
+'f': float
+'c': complex float
+'m': timedelta
+'M': datetime
+'O': object
+'S': string
+'U': unicode string
+'V': fixed chunk of memory for other type (void)
+
+
+#tạo mảng string có n kí tự
+arr = np.array(["23asdasd"], dtype="<U4")
+print(arr) 
+output: ['23asd']
+
+                                    số lượng bit
+                                       |
+print(np.array(12323123343434, dtype="i3"))
+output: stack overflow -> tràn số do i3 chỉ chứa miền giá trị từ 0 đến 2^(3*8) - 1
+
+#
+Miền giá trị của kiểu unsigned integer:
+np.uint8: 0 -> 255; np.int8: -128 -> 127
+np.uint16: 0 -> 65535; np.int16: -32768 -> 32767
+np.uint32: 0 -> 4294967295; np.int32: -2147483648 -> 2147483647
+np.uint64: 0 -> 18446744073709551615; np.int64: -9223372036854775808 -> 9223372036854775807
+#
+
+#kiểu boolean:
+print(np.array([1, 3, 5, 6, 7, 0, 2, 0], dtype=bool))
+output: [True, True, True, True, True, False, True, False]
+
+
+COPY AND VIEW IN PYTHON
+- copy(): copy mảng, tạo thành mảng độc lập, mọi thay đổi không ảnh hưởng đến mảng đó
+- view(): mọi thay đổi sẽ ảnh hưởng đến mảng đó
+
+#copy
+arr = np.array([1, 2, 4, 5])
+a = arr.copy()
+arr[0] = 3
+print(a)
+output: [1, 2, 4, 5]
+
+#view
+b = arr.view()
+arr[0] = 5
+print(b)
+output: [5, 2, 4, 5]
+
+
