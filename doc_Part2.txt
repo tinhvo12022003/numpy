@@ -1,0 +1,107 @@
+import numpy as np
+
+#SHAPE
+trả về tuple dạng của chiều của mảng
+print(np.array((1, 2, 3, 4, 5)).shape)
+#output: (5,)
+
+arr = np.array([1, 4, 6, 4, 1], ndim=6)
+a = arr.shape -> (1, 1, 1, 1, 1, 5)
+#có thể truy cập vào từng phần tử của như truy cập vào tuple
+print(a[len(a)-1]) #output: 5
+
+
+
+RESHAPE TRONG NUMPY
+
+1D to 2D
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+newarr = arr.reshape(4, 3)
+#chia mảng ban đầu thành 4 dòng 3 cột
+[
+[1, 2, 3],
+[4, 5, 6],
+[7, 8, 9],
+[10, 11, 12]
+]
+
+1D to 3D
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+newarr = arr.reshape(2, 3, 2)
+#chia mảng ban đầu vào 2 phần tử, mỗi phần tử có 3 dòng, 2 cột
+[
+[
+[1, 2],
+[3, 4],
+[5, 6]
+],
+[
+[7, 8],
+[9, 10],
+[11, 12]
+]
+]
+
+print(newarr.base) # trả về mảng ban đầu
+#output: [1, 2, 3,4 , 5, 6, 7, 8, 9, 10, 11, 12]
+
+INTERATING ARRAY IN NUMPY
+arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+for x in arr: #[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]] -> chiều thứ 1
+    for y in x: #[1, 2, 3], [4, 5, 6] và [7, 8, 9], [10, 11, 12] -> chiều thứ 2
+        for z in y: #[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] ->chiều thứ 3
+            print(z)
+            
+#Hàm np.nditer(arr, op_flags, flags, order, casting, op_dtypes, itershape, buffersize)
++ op_flags: chỉ định thao tác với mảng nguồn ['readonly'], ['writeonly'], ['readwrite']
+
++ flags: 
+
++ order
+
++ casting: kiểm soát chuyển đổi dữ liệu khi gán các giá trị vào mảng
+
++ op_dtypes: đặt kiểu dữ liệu cho các mảng để sử dụng trong quá trình lặp
+
++ buffersize: Kích thước của buffer tối đa để sử dụng cho ufunc 'reduce', 'reduceat' và 'accumulate'.
+
+#Hàm enumerate(arr)
+in ra giá trị index và element
+
+
+JOINING ARRAY IN NUMPY
+
+arr = np.concaternate((arr1, arr2), axis=) -> nối mảng
+
+axis = 0 nối mảng theo chiều dọc (thêm vào hàng)
+axis = 1 nối mảng theo chiều ngang (thêm vào côt)
+
+
+np.stack((arr1, arr2), axis=, out=) -> nối mảng theo trục
+axis: nối mảng theo trục mới
+out: mảng mới để lưu kết quả
+
+np.hstack((arr1, arr2)) -> nối mảng theo chiều ngang (cột)
+
+np.vstack((arr1, arr2)) -> nối mảng theo chiều dọc (dòng)
+
+
+SPLITTING ARRAY IN NUMPY
+
+b = np.array_split(arr, number) -> trả về mảng chứa n phần tử
+number: số lần muốn chia mảng
+
+
+SEARCH IN NUMPY
+np.where(condition with array) -> trả về chỉ số của mảng định với điều kiện
+VD:
+arr = np.array([1, 2, 3, 4, 5])
+x = np.where(arr % 2 != 0) -> x = [0, 2, 4]
+
+#hàm np.searchsorted()
+arr = np.array([1, 2, 3, 4, 5])
+x = np.searchsorted(arr, element, side="left/right", sorter=arr)
+
+#hàm np.sort()
+arr = np.array([1, 2, 3, 4, 5])
+x = np.sort(arr)
