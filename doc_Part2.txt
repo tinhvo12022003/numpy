@@ -102,6 +102,12 @@ x = np.where(arr % 2 != 0) -> x = [0, 2, 4]
 arr = np.array([1, 2, 3, 4, 5])
 x = np.searchsorted(arr, element, side="left/right", sorter=arr)
 
+
 #hàm np.sort()
 arr = np.array([1, 2, 3, 4, 5])
 x = np.sort(arr)
+numpy.sort(a, axis=-1, kind='quicksort', order=None)
+a: Mảng cần sắp xếp.
+axis (optional): Trục cần sắp xếp. Mặc định là -1, tức là sắp xếp trên trục cuối cùng.
+kind (optional): Phương pháp sắp xếp. Mặc định là 'quicksort', nhưng cũng có thể là 'mergesort', 'heapsort', hoặc 'stable'.
+order (optional): Tên cột hoặc danh sách các cột để sắp xếp mảng có cấu trúc.
