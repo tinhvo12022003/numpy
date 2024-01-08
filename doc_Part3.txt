@@ -1,0 +1,28 @@
+RANDOM IN NUMPY
+
+#import module random của numpy
+from numpy import random
+
+x = random.randint(100)
+#tạo 1 số nguyên ngẫu nhiên trong khoảng 100
+random.randint(100, size=10)
+#tạo 10 số nguyên ngẫu nhiên trong khoảng 100
+
+x = random.rand()
+
+Hàm choice()
+vd:
+x = [2, 4, 6, 1, 5, 3]
+y = random.choice(x, size=(3, 4), replace=True/False, p=[0.1, 0.3, 0.6, 0.0, 0.2, 0.0])
+# Tạo mảng y gồm 3 dòng 4 cột, các phần tử trong mảng mới thuộc mảng x
+#repalce=True cho phép lặp lại phần tử đã chọn, ngược lại
+#p: set xác suất xuất hiện của các phần tử trong mảng x
+
+Hàm shuffle()
+vd:
+x = [2, 4, 6, 1, 5, 3]
+random.shuffle(x)
+#thay đổi mảng x, thay đổi vị trí các phần tử ngẫu nhiên
+
+Hàm permutation()
+#trả về mảng mới với mảng ngẫu nhiên nhưng không làm thay đổi mảng ban đầu
