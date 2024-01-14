@@ -26,3 +26,10 @@ random.shuffle(x)
 
 Hàm permutation()
 #trả về mảng mới với mảng ngẫu nhiên nhưng không làm thay đổi mảng ban đầu
+
+
+Hàm zip()
+#lấy mỗi phần tử từ các ierables và đóng gói thành 1 tuple, sau đó trả về 1 iterator của các tuple
+
+Hàm np.add()
+#trả về tổng của từng cặp iterator
