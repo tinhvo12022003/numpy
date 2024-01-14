@@ -1,0 +1,22 @@
+UFUNC IN NUMPY
+
+Hàm np.frompyfunc(func, nin, nout)
+#func: tên hàm định nghĩa
+#nin: số lượng tham số đầu vào
+#nout: số lượng tham số đầu ra
+
+VD:
+def myadd(a, b):
+    return a + b
+
+myadd = np.frompyfrom(myadd, 2, 1)
+print(myadd(1, 2)) #output: 3
+
+
+Hàm np.prod(a, axis, dtype, out, keepdims, initial, where)
+#a: mảng đầu vào
+#axis: trục muốn nhân các phần tử trong mảng
+
+Hàm np.cumprod(a, axis)
+#a: mảng đầu vào
+#axis: trục muốn nhân các phần tử
